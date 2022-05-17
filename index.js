@@ -41,7 +41,7 @@ function chessBoard(moves, initialPosition) {
     for (let i = 0; i < 8; i++) {
         chessBoard[i] = [];
         for (let j = 0; j < 8; j++) {
-            chessBoard[i][j] = ' 0 ';
+            chessBoard[i][j] = ' - ';
         }
     }
     for (let i = 0; i < moves.length; i++) {
@@ -54,9 +54,10 @@ function chessBoard(moves, initialPosition) {
 function printChessBoard(chessBoard) {
     let result = '';
     result += '\n';
-    result += '   A   B   C   D   E   F   G   H\n';
+    result += '    A   B   C   D   E   F   G   H\n';
+    result += '\n';
     for (let i = 0; i < chessBoard.length; i++) {
-        result += (i + 1) + ' ';
+        result += (i + 1) + '  ';
         for (let j = 0; j < chessBoard[i].length; j++) {
             result += chessBoard[j][i] + ' ';
         }
