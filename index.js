@@ -1,3 +1,17 @@
+//Functio to convert array ccordinates to chess coordinates (A1, B2, etc)
+function convertToChessCoordinates(x, y) {
+    var letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    return letters[x] + (y + 1);
+}
+
+//Functio to convert chess coordinates to array coordinates (A1, B2, etc)
+function convertToArrayCoordinates(chessCoordinates) {
+    var letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    var x = letters.indexOf(chessCoordinates[0]);
+    var y = parseInt(chessCoordinates[1]) - 1;
+    return [x, y];
+}
+
 function knightMoves(x, y) {
     if (x < 0 || x > 7 || y < 0 || y > 7) {
         return 'Invalid input';
@@ -40,9 +54,11 @@ function chessBoard(moves, initialPosition) {
 function printChessBoard(chessBoard) {
     let result = '';
     result += '\n';
+    result += '   A   B   C   D   E   F   G   H\n';
     for (let i = 0; i < chessBoard.length; i++) {
+        result += (i + 1) + ' ';
         for (let j = 0; j < chessBoard[i].length; j++) {
-            result += chessBoard[i][j] + ' ';
+            result += chessBoard[j][i] + ' ';
         }
         result += '\n\n';
     }
@@ -56,10 +72,7 @@ const rl = readline.createInterface({
 });
 
 
-rl.question('Enter the position of the Knight on the chessboard(separate the coordinates using comma(,)): ', (answer) => {
-    let userInputArray = answer.split(',');
-    let x = parseInt(userInputArray[0]);
-    let y = parseInt(userInputArray[1]);
-    console.log(knightMoves(x, y));
+rl.question('Enter the position of the Knight on the chessboard(A2, D4, E7 etc): ', (answer) => {
+    console.log(knightMoves(...convertToArrayCoordinates(answer)));
     rl.close();
 });
