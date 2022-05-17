@@ -37,6 +37,11 @@ function knightMoves(x, y) {
 }
 
 function chessBoard(moves, initialPosition) {
+    console.log('\nInitial position: ' + convertToChessCoordinates(initialPosition[0], initialPosition[1]));
+    console.log('Possible move(s): ');
+    moves.forEach(element => {
+        console.log(`N${convertToChessCoordinates(element[0], element[1]).toLowerCase()}`);
+    });
     let chessBoard = [];
     for (let i = 0; i < 8; i++) {
         chessBoard[i] = [];
